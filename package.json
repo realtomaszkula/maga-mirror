@@ -10,8 +10,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/electron": "^1.4.30",
     "electron": "^1.4.13",
     "jssha": "^2.2.0",
     "oauth": "^0.9.14"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.44"
   }
 }
