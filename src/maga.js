@@ -14,17 +14,16 @@ function getResponse(endpoint, params) {
 }
 
 function parseTweet(tweet) {
+  const { text, favorite_count, created_at, retweet_count} = tweet;
   return {
-    text: tweet.text,
-    favorite_count: tweet.favorite_count,
-    created_at: tweet.created_at,
-    retweet_count: tweet.retweet_count
+    text, favorite_count, created_at, retweet_count
   }
 }
 
-function parseTimeline(response) {
-  debugger
-  return response.map(tweet => parseTweet(tweet));
+function parseResponse(response) {
+  return Array.isArray(response) 
+          ? response.map(tweet => parseTweet(tweet))
+          : response.statuses.map(tweet => parseTweet(tweet));
 }
 
 let recentMentions = {
@@ -46,11 +45,11 @@ let donaldTimeline = {
   }
 }
 
-const handleResults = (response) => console.log(parseTimeline(response));
+const handleResults = (response) => console.log(parseResponse(response));
 const handleError = (error) => console.error(error);
 
-// getResponse(recentMentions.endpoint, recentMentions.params)
-//   .then(handleResults, handleError);
+getResponse(recentMentions.endpoint, recentMentions.params)
+   .then(handleResults, handleError);
 
 getResponse(donaldTimeline.endpoint, donaldTimeline.params)
   .then(handleResults, handleError);
