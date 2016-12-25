@@ -24,6 +24,16 @@ ul {
   color: #aab8c2;
 }
 
+ul.statistics li:nth-child(1) {
+  color: #1da1f2;
+}
+ul.statistics li:nth-child(2) {
+  color: #19cf86;
+}
+
+ul.statistics li:nth-child(3) {
+  color: #e81c4f;
+}
 .avatar {
   margin-right: 20px;
 }
