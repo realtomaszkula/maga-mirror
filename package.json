@@ -13,7 +13,8 @@
     "@types/electron": "^1.4.30",
     "electron": "^1.4.13",
     "jssha": "^2.2.0",
-    "oauth": "^0.9.14"
+    "oauth": "^0.9.14",
+    "twitter": "^1.7.0"
   },
   "dependencies": {
     "@types/lodash": "^4.14.44"

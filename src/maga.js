@@ -1,21 +1,22 @@
-const OAuth = require('oauth');
+const Twitter = require('twitter');
 const ENV = require('../env');
+const {consumer_key, consumer_secret, access_token_key, access_token_secret} = ENV;
 
-console.log(ENV.CONSUMER_KEY);
-// const requestToken = '';
-// const accessToken = '';
-// const consumerKey = '';
-// const applicationSecret = '';::
-// 
-// let oauth = new OAuth.OAuth(
-//   requestToken,
-//   accessToken,
-//   consumerKey,
-//   applicationSecret,
-//   '1.0A',
-//   null,
-//   'HMAC-SHA1'
-// )
-// 
-// console.log(process.env.HOME);
-// 
+
+const client = new Twitter({
+  consumer_key,
+  consumer_secret,
+  access_token_key,
+  access_token_secret
+})
+
+
+const params = {
+  q: '@realDonaldTrump'
+}
+
+client.get('search/tweets', params, function(error, tweets, response) {
+  if (error) console.error(error);
+  console.log(tweets);
+  console.log(response);
+})
