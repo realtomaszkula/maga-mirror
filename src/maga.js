@@ -10,13 +10,34 @@ const client = new Twitter({
   access_token_secret
 })
 
-
-const params = {
-  q: '@realDonaldTrump'
+function getResponse(endpoint, params) {
+  return client.get(endpoint, params);
 }
 
-client.get('search/tweets', params, function(error, tweets, response) {
-  if (error) console.error(error);
-  console.log(tweets);
-  console.log(response);
-})
+let recentMentions = {
+  endpoint: 'search/tweets',
+  params: {
+    q: '@realDonaldTrump',
+    result_type: 'recent'
+  }
+}
+
+let donaldTimeline = {
+  endpoint: 'statuses/user_timeline',
+  params: {
+    screen_name: 'realDonaldTrump',
+    count: 5,
+    trim_user: true,
+    exclude_replies: true,
+    include_rts: false
+  }
+}
+
+const handleResults = (tweet) => console.log(tweet);
+const handleError = (error) => console.error(error);
+
+getResponse(recentMentions.endpoint, recentMentions.params)
+  .then(handleResults, handleError);
+
+getResponse(donaldTimeline.endpoint, donaldTimeline.params)
+  .then(handleResults, handleError);
