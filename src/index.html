@@ -10,33 +10,54 @@
   <div class="container">
     <section id="twitter">
       <img src="../assets/avatar_placeholder.jpg" class="img-rounded avatar" width="200" height="200">
-      <section class="tweet">
-        <ul class="whois">
-          <li class="whois__item whois__name">Donald</li>
-          <li class="whois__item whois__at">@realDonald</li>
-          <li class="whois__item whois__timeago">1 hour</li>
-        </ul>
-        <p class="tweet-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eos incidunt expedita consectetur laudantium tenetur beatae dignissimos voluptatum nam laborum.
-        </p>
-        <ul class="statistics">
-          <li class="statistics__item ">
-            <span class="glyphicon glyphicon-share-alt" aria-hidden="true">
-            </span>
-            <span class="statistic__item--value statistics__reply">value</span>
+      <div>
+        <ul class="meta">
+          <li class="meta__item">
+            <div class="meta__item--title meta-tweets">Tweets</div>
+            <div class="meta__item--value"></div>
           </li>
-          <li class="statistics__item ">
-              <span class="glyphicon glyphicon-retweet" aria-hidden="true">
-            </span>
-            <span class="statistic__item--value statistics__retweet">value</span>
+          <li class="meta__item">
+            <div class="meta__item--title meta-following">Following</div>
+            <div class="meta__item--value"></div>
           </li>
-          <li class="statistics__item ">
-            <span class="glyphicon glyphicon-heart" aria-hidden="true">
-            </span>
-            <span class="statistic__item--value statistics__like">value</span>
+          <li class="meta__item">
+            <div class="meta__item--title meta-followers">Followers</div>
+            <div class="meta__item--value"></div>
+          </li>
+          <li class="meta__item meta-likes">
+            <div class="meta__item--title">Likes</div>
+            <div class="meta__item--value"></div>
           </li>
         </ul>
-      </section>
+        <section class="tweet">
+          <ul class="whois">
+            <li class="whois__item whois__name">Donald</li>
+            <li class="whois__item whois__at">@realDonald</li>
+            <li class="whois__item whois__timeago">1 hour</li>
+          </ul>
+          <p class="tweet-text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eos incidunt expedita consectetur laudantium tenetur beatae dignissimos voluptatum nam laborum.
+          </p>
+          <ul class="statistics">
+            <li class="statistics__item ">
+              <span class="glyphicon glyphicon-share-alt" aria-hidden="true">
+              </span>
+              <span class="statistic__item--value statistics__reply">value</span>
+            </li>
+            <li class="statistics__item ">
+                <span class="glyphicon glyphicon-retweet" aria-hidden="true">
+              </span>
+              <span class="statistic__item--value statistics__retweet">value</span>
+            </li>
+            <li class="statistics__item ">
+              <span class="glyphicon glyphicon-heart" aria-hidden="true">
+              </span>
+              <span class="statistic__item--value statistics__like">value</span>
+            </li>
+          </ul>
+        </section>
+
+      </div>
     </section>
   </div>
     <script>require('./maga.js')</script>

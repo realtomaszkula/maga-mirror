@@ -1,4 +1,7 @@
+/* general */
 body {
+  color: white;
+  background: #1d1f21;
     padding: 25px;
 }
 
@@ -7,43 +10,43 @@ ul {
   padding: 0;
 }
 
-.whois, .statistics {
+/* twitter */
+#twitter {
+  display: flex;
+}
+.whois, .statistics, .meta {
   display: flex;
   flex-flow: column, wrap;
 }
 
-.tweet-text {
-  font-size: 18px;
+/* avatar */
+.avatar {
+  margin-right: 20px;
 }
-.whois__item.whois__name {
+
+/* meta */
+
+/* who is */
+.whois__name {
   font-weight: 600;
-  color: black;
 }
 .whois__item, .statistics__item{
   flex: 1;
   color: #aab8c2;
 }
 
+/* tweet text */
+.tweet-text {
+  font-size: 18px;
+}
+
+/* statistics */
 ul.statistics li:nth-child(1) {
   color: #1da1f2;
 }
 ul.statistics li:nth-child(2) {
   color: #19cf86;
 }
-
 ul.statistics li:nth-child(3) {
   color: #e81c4f;
-}
-.avatar {
-  margin-right: 20px;
-}
-.tweet {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#twitter {
-  display: flex;
 }
