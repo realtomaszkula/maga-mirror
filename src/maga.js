@@ -26,6 +26,19 @@ function parseResponse(response) {
           : response.statuses.map(tweet => parseTweet(tweet));
 }
 
+function parseProfileInfo(response) {
+  const { description, followers_count, location, name, 
+      profile_banner_url, profile_image_url_https, statuses_count} = response;
+  return {
+    description,
+    followers_count,
+    location,
+    profile_banner_url,
+    profile_image_url_https,
+    statuses_count
+  }
+}
+
 let recentMentions = {
   endpoint: 'search/tweets',
   params: {
@@ -60,20 +73,6 @@ getResponse(recentMentions.endpoint, recentMentions.params)
 
 getResponse(donaldTimeline.endpoint, donaldTimeline.params)
   .then(handleResults, handleError);
-
-
-function parseProfileInfo(response) {
-  const { description, followers_count, location, name, 
-      profile_banner_url, profile_image_url_https, statuses_count} = response;
-  return {
-    description,
-    followers_count,
-    location,
-    profile_banner_url,
-    profile_image_url_https,
-    statuses_count
-  }
-}
 
 getResponse(profileStyles.endpoint, profileStyles.params)
   .then((resp) => console.log(parseProfileInfo(resp)), handleError);
