@@ -45,6 +45,13 @@ let donaldTimeline = {
   }
 }
 
+let profileStyles = {
+  endpoint: 'users/show',
+  params: {
+    screen_name: 'realDonaldTrump'
+  }
+}
+
 const handleResults = (response) => console.log(parseResponse(response));
 const handleError = (error) => console.error(error);
 
@@ -53,3 +60,20 @@ getResponse(recentMentions.endpoint, recentMentions.params)
 
 getResponse(donaldTimeline.endpoint, donaldTimeline.params)
   .then(handleResults, handleError);
+
+
+function parseProfileInfo(response) {
+  const { description, followers_count, location, name, 
+      profile_banner_url, profile_image_url_https, statuses_count} = response;
+  return {
+    description,
+    followers_count,
+    location,
+    profile_banner_url,
+    profile_image_url_https,
+    statuses_count
+  }
+}
+
+getResponse(profileStyles.endpoint, profileStyles.params)
+  .then((resp) => console.log(parseProfileInfo(resp)), handleError);
