@@ -1,6 +1,10 @@
+body {
+    padding: 25px;
+}
 
 ul {
   list-style: none;
+  padding: 0;
 }
 
 .whois, .statistics {
@@ -8,6 +12,28 @@ ul {
   flex-flow: column, wrap;
 }
 
+.tweet-text {
+  font-size: 18px;
+}
+.whois__item.whois__name {
+  font-weight: 600;
+  color: black;
+}
 .whois__item, .statistics__item{
   flex: 1;
+  color: #aab8c2;
+}
+
+.avatar {
+  margin-right: 20px;
+}
+.tweet {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#twitter {
+  display: flex;
 }
