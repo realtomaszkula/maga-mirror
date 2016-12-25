@@ -1,0 +1,13 @@
+
+ul {
+  list-style: none;
+}
+
+.whois, .statistics {
+  display: flex;
+  flex-flow: column, wrap;
+}
+
+.whois__item, .statistics__item{
+  flex: 1;
+}
