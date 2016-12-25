@@ -76,3 +76,22 @@ getResponse(donaldTimeline.endpoint, donaldTimeline.params)
 
 getResponse(profileStyles.endpoint, profileStyles.params)
   .then((resp) => console.log(parseProfileInfo(resp)), handleError);
+
+
+// render
+const whois = {
+  name: document.querySelector('.whois__name'),
+  at: document.querySelector('.whois__at'),
+  timeAgo: document.querySelector('.whois__timeago')
+}
+
+
+const statistics = {
+  reply:  document.querySelector('.statistics__reply'),
+  retweet: document.querySelector('.statistics__retweet'),
+  heart: document.querySelector('.statistics__like'),
+}
+
+
+console.log(whois);
+console.log(statistics);
