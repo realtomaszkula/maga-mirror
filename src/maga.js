@@ -59,15 +59,14 @@ let profileStyles = {
 
 // target dom
 const whois = {
-  name: document.querySelector('.whois__name'),
-  at: document.querySelector('.whois__at'),
-  timeAgo: document.querySelector('.whois__timeago')
+  name: document.querySelector('.whois__item--name'),
+  at: document.querySelector('.whois__item--handle'),
 }
 
 const statistics = {
-  reply:  document.querySelector('.statistics__reply'),
-  retweet_count: document.querySelector('.statistics__retweet'),
-  favorite_count: document.querySelector('.statistics__like'),
+  timeAgo: document.querySelector('#time'),
+  retweet_count: document.querySelector('#retweet'),
+  favorite_count: document.querySelector('#heart'),
 }
 
 const profile = {
@@ -103,7 +102,7 @@ getResponse(donaldTimeline.endpoint, donaldTimeline.params)
     // statistics
     statistics.retweet_count.textContent = formatDisplayedStatistics(currentTweet.retweet_count);
     statistics.favorite_count.textContent = formatDisplayedStatistics(currentTweet.favorite_count);
-    whois.timeAgo.textContent = formatDate(currentTweet.created_at); 
+    statistics.timeAgo.textContent = formatDate(currentTweet.created_at);
       
     // tweet content
    tweetContent.textContent = formatDisplayedTweet(currentTweet.text); 

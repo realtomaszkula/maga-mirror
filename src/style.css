@@ -14,6 +14,7 @@ ul {
 #twitter {
   display: flex;
 }
+
 .whois, .statistics, .meta {
   display: flex;
   flex-flow: column, wrap;
@@ -25,14 +26,31 @@ ul {
 }
 
 /* meta */
-
-/* who is */
-.whois__name {
+.meta {
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: #aab8c2;
+}
+.meta__item {
+  text-align: center;
   font-weight: 600;
 }
-.whois__item, .statistics__item{
-  flex: 1;
+
+/* tweet */
+.tweet {
+  padding-left: 20px;
+  border-left: 2px solid white;
+}
+
+/* who is */
+.whois__item {
+  padding-right: 10px;
   color: #aab8c2;
+}
+
+.whois__item--name {
+  color: white;
+  font-weight: 600;
 }
 
 /* tweet text */
@@ -41,12 +59,21 @@ ul {
 }
 
 /* statistics */
-ul.statistics li:nth-child(1) {
-  color: #1da1f2;
+.statistics__item {
+  flex: 1;
 }
-ul.statistics li:nth-child(2) {
+
+.statistics__item--value {
+  font-weight: 600;
+}
+
+.statistics__item--time {
+  color: dodgerblue;
+}
+
+.statistics__item--retweet {
   color: #19cf86;
 }
-ul.statistics li:nth-child(3) {
+.statistics__item--heart {
   color: #e81c4f;
 }
