@@ -28,13 +28,13 @@ function parseResponse(response) {
 
 function parseProfileInfo(response) {
   const { description, followers_count, location, name, 
-      profile_banner_url, profile_image_url_https, statuses_count} = response;
+      profile_banner_url, profile_image_url, statuses_count} = response;
   return {
     description,
     followers_count,
     location,
     profile_banner_url,
-    profile_image_url_https,
+    profile_image_url,
     statuses_count
   }
 }
@@ -65,6 +65,25 @@ let profileStyles = {
   }
 }
 
+
+// target dom
+const whois = {
+  name: document.querySelector('.whois__name'),
+  at: document.querySelector('.whois__at'),
+  timeAgo: document.querySelector('.whois__timeago')
+}
+
+const statistics = {
+  reply:  document.querySelector('.statistics__reply'),
+  retweet: document.querySelector('.statistics__retweet'),
+  heart: document.querySelector('.statistics__like'),
+}
+
+const profile = {
+  avatar: document.querySelector('.avatar')
+}
+
+// hit api
 const handleResults = (response) => console.log(parseResponse(response));
 const handleError = (error) => console.error(error);
 
@@ -75,23 +94,8 @@ getResponse(donaldTimeline.endpoint, donaldTimeline.params)
   .then(handleResults, handleError);
 
 getResponse(profileStyles.endpoint, profileStyles.params)
-  .then((resp) => console.log(parseProfileInfo(resp)), handleError);
-
-
-// render
-const whois = {
-  name: document.querySelector('.whois__name'),
-  at: document.querySelector('.whois__at'),
-  timeAgo: document.querySelector('.whois__timeago')
-}
-
-
-const statistics = {
-  reply:  document.querySelector('.statistics__reply'),
-  retweet: document.querySelector('.statistics__retweet'),
-  heart: document.querySelector('.statistics__like'),
-}
-
-
-console.log(whois);
-console.log(statistics);
+  .then((resp) => {
+    const profileInfo = parseProfileInfo(resp);
+    
+    profile.avatar.setAttribute('src', profileInfo.profile_image_url);
+  }, handleError);
