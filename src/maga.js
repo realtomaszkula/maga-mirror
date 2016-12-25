@@ -28,15 +28,19 @@ function parseResponse(response) {
 }
 
 function parseProfileInfo(response) {
-  const { description, followers_count, location, name, 
+  const { name, screen_name, friends_count, favourites_count, description, followers_count, location,  
       profile_banner_url, profile_image_url, statuses_count} = response;
   return {
+    name,
+    screen_name,
     description,
     followers_count,
     location,
     profile_banner_url,
     profile_image_url,
-    statuses_count
+    statuses_count,
+    friends_count,
+    favourites_count
   }
 }
 
@@ -60,7 +64,7 @@ let profileStyles = {
 // target dom
 const whois = {
   name: document.querySelector('.whois__item--name'),
-  at: document.querySelector('.whois__item--handle'),
+  handle: document.querySelector('.whois__item--handle'),
 }
 
 const statistics = {
@@ -73,13 +77,23 @@ const profile = {
   avatar: document.querySelector('.avatar')
 }
 
+const meta = {
+  tweets: document.querySelector('#tweets'),
+  following: document.querySelector('#following'),
+  followers: document.querySelector('#followers'),
+  likes: document.querySelector('#likes'),
+}
 const tweetContent = document.querySelector('.tweet-text');
 
 // render
 function formatDisplayedStatistics(value) {
-  return (value > 1000)
-    ? `${(value/1000).toFixed(1)}K`
-    : value
+  if (value > 1000000) {
+    return (value / 1000000).toFixed(1) + 'M'
+  }
+  if (value > 1000) {
+    return (value / 10000).toFixed(1) + 'K'
+  }
+  return value
 }
 
 function formatDisplayedTweet(tweet) {
@@ -98,8 +112,9 @@ const handleError = (error) => console.error(error);
 getResponse(donaldTimeline.endpoint, donaldTimeline.params)
   .then((resp) => {
     const currentTweet = parseResponse(resp)[0];
+    console.log(currentTweet);
 
-    // statistics
+    // tweet statistics
     statistics.retweet_count.textContent = formatDisplayedStatistics(currentTweet.retweet_count);
     statistics.favorite_count.textContent = formatDisplayedStatistics(currentTweet.favorite_count);
     statistics.timeAgo.textContent = formatDate(currentTweet.created_at);
@@ -114,5 +129,15 @@ getResponse(profileStyles.endpoint, profileStyles.params)
     const profileInfo = parseProfileInfo(resp);
     
     profile.avatar.setAttribute('src', profileInfo.profile_image_url);
+
+    // meta data
+    meta.tweets.textContent = formatDisplayedStatistics(profileInfo.statuses_count);
+    meta.following.textContent = formatDisplayedStatistics(profileInfo.friends_count);
+    meta.followers.textContent = formatDisplayedStatistics(profileInfo.followers_count);
+    meta.likes.textContent = formatDisplayedStatistics(profileInfo.favourites_count);
+
+    // shois
+    whois.handle.textContent = '@' + profileInfo.screen_name;
+    whois.name.textContent = profileInfo.name;
 
   }, handleError);
